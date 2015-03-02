@@ -21,14 +21,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.content.Intent;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment {
+public class NavigationDrawerFragmentChampion extends Fragment {
 
     /**
      * Remember the position of the selected item.
@@ -59,7 +58,7 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
-    public NavigationDrawerFragment() {
+    public NavigationDrawerFragmentChampion() {
     }
 
     @Override
@@ -91,7 +90,7 @@ public class NavigationDrawerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
-                R.layout.fragment_navigation_drawer, container, false);
+                R.layout.fragment_navigation_drawer_champions, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,9 +103,9 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.id.text1,
                 new String[]{
                         getString(R.string.title_home),
-                        getString(R.string.title_champions),
-                        getString(R.string.title_items),
-                        getString(R.string.title_topics),
+                        getString(R.string.champion_graves),
+                        getString(R.string.champion_talon),
+                        getString(R.string.champion_twisted_fate),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -201,24 +200,7 @@ public class NavigationDrawerFragment extends Fragment {
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
-
-        if (mCurrentSelectedPosition == 1){
-            gotoChampionsActivity(getView());
-        }
     }
-
-    public void gotoChampionsActivity(View v){
-        //Starts champions activity
-        Intent intent = new Intent(getActivity(), Champions.class);
-        startActivity(intent);
-    }
-
-    public void gotoItemsActivity(View v){
-        //Starts items activity
-        //Intent intent = new Intent(getActivity(), Items.class);
-        //startActivity(intent);
-    }
-
 
     @Override
     public void onAttach(Activity activity) {

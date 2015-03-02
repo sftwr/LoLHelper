@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">LoLHelper</string>
+    <string name="title_home">___</string>
     <string name="title_champions">Champions</string>
     <string name="title_items">Items</string>
     <string name="title_topics">Topics</string>
@@ -9,5 +10,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="title_champion_list">Champions</string>
+    <string name="title_champion_detail">Champion Detail</string>
+    <string name="title_activity_champions">Champions</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="champion_graves">Graves</string>
+    <string name="champion_talon">Talon</string>
+    <string name="champion_twisted_fate">Twisted Fate</string>
 
 </resources>

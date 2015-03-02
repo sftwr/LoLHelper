@@ -5,28 +5,21 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.content.Intent;
 
-
-public class LoLHelper extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class Champions extends Activity
+        implements NavigationDrawerFragmentChampion.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
+    private NavigationDrawerFragmentChampion mNavigationDrawerFragmentChampion;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -36,14 +29,14 @@ public class LoLHelper extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lolhelper);
+        setContentView(R.layout.activity_champions);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
+        mNavigationDrawerFragmentChampion = (NavigationDrawerFragmentChampion)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
+        mNavigationDrawerFragmentChampion.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
@@ -73,16 +66,16 @@ public class LoLHelper extends Activity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.app_name);
-                break;
-            case 2:
                 mTitle = getString(R.string.title_champions);
                 break;
+            case 2:
+                mTitle = getString(R.string.champion_graves);
+                break;
             case 3:
-                mTitle = getString(R.string.title_items);
+                mTitle = getString(R.string.champion_talon);
                 break;
             case 4:
-                mTitle = getString(R.string.title_topics);
+                mTitle = getString(R.string.champion_twisted_fate);
                 break;
         }
     }
@@ -97,11 +90,11 @@ public class LoLHelper extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+        if (!mNavigationDrawerFragmentChampion.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.lo_lhelper, menu);
+            getMenuInflater().inflate(R.menu.champions, menu);
             restoreActionBar();
             return true;
         }
@@ -148,14 +141,14 @@ public class LoLHelper extends Activity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_lolhelper, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_champions, container, false);
             return rootView;
         }
 
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((LoLHelper) activity).onSectionAttached(
+            ((Champions) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
