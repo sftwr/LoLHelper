@@ -202,6 +202,9 @@ public class NavigationDrawerFragment extends Fragment {
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
 
+        if (mCurrentSelectedPosition == 0){
+        }
+
         if (mCurrentSelectedPosition == 1){
             gotoChampionsActivity(getView());
         }
