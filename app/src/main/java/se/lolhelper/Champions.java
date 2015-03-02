@@ -12,6 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class Champions extends Activity
         implements NavigationDrawerFragmentChampion.NavigationDrawerCallbacks {
@@ -25,6 +33,7 @@ public class Champions extends Activity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    TextView championMainText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,8 @@ public class Champions extends Activity
         mNavigationDrawerFragmentChampion.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+        championMainText = (TextView) findViewById(R.id.championMainTextID);
+
     }
 
     @Override
@@ -67,17 +78,37 @@ public class Champions extends Activity
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_champions);
+                setMainText("champions_home");
                 break;
             case 2:
-                mTitle = getString(R.string.champion_graves);
+                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_graves);
                 break;
             case 3:
-                mTitle = getString(R.string.champion_talon);
+                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_talon);
                 break;
             case 4:
-                mTitle = getString(R.string.champion_twisted_fate);
+                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_twisted_fate);
                 break;
         }
+    }
+
+    public void setMainText(String name){
+        InputStream is = getResources().openRawResource(getResources().getIdentifier(name, "raw", getPackageName()));
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String line = null;
+        try {
+            clearMainText();
+            while((line = br.readLine()) != null){
+                championMainText.append(line);
+                championMainText.append("\n");
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void clearMainText(){
+        championMainText.setText("");
     }
 
     public void restoreActionBar() {
