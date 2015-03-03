@@ -106,7 +106,8 @@ public class NavigationDrawerFragmentChampion extends Fragment {
                 // in the String[] contains all champion names
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,pChampions.getChampionNames()));
+                android.R.id.text1,
+                pChampions.getChampionNames()));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
