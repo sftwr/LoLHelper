@@ -75,6 +75,7 @@ public class Champions extends Activity
     }
 
     public void onSectionAttached(int number) {
+        //updates the titlebar and the championMainText TextView
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_champions);
@@ -93,6 +94,8 @@ public class Champions extends Activity
     }
 
     public void setMainText(String name){
+        //get the raw resource text file using the name parameter
+        //clear the championMainText and then append the contents of the file to the field.
         InputStream is = getResources().openRawResource(getResources().getIdentifier(name, "raw", getPackageName()));
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line = null;
@@ -108,6 +111,7 @@ public class Champions extends Activity
     }
 
     public void clearMainText(){
+        //clears the championMainText
         championMainText.setText("");
     }
 

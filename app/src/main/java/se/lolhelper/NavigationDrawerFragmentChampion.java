@@ -98,6 +98,7 @@ public class NavigationDrawerFragmentChampion extends Fragment {
             }
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
+                // in the String[] contains all champion names
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,

@@ -99,6 +99,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
+                //in the String[] contains the sections for the navigation drawer
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
@@ -191,6 +192,8 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private void selectItem(int position) {
+        //Function is called when the user selects an item
+
         mCurrentSelectedPosition = position;
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
@@ -205,6 +208,7 @@ public class NavigationDrawerFragment extends Fragment {
         if (mCurrentSelectedPosition == 0){
         }
 
+        //Go to champions
         if (mCurrentSelectedPosition == 1){
             gotoChampionsActivity(getView());
         }
