@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ItemsList{
 
-    List pItemsList;
+    List<Item> pItemsList;
 
     public ItemsList(){
         pItemsList = new LinkedList();
@@ -40,7 +40,7 @@ public class ItemsList{
 
     public Item getItem(int _iIndex){
         if(this.getSize() > 0) {
-            Item pTemporaryItem = (Item) pItemsList.get(_iIndex);
+            Item pTemporaryItem = pItemsList.get(_iIndex);
             return (pTemporaryItem);
         }
         else return null;

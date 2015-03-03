@@ -97,17 +97,14 @@ public class NavigationDrawerFragmentChampion extends Fragment {
                 selectItem(position);
             }
         });
+
+        ManagerChampions pChampions = new ManagerChampions();
+
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 // in the String[] contains all champion names
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_home),
-                        getString(R.string.champion_graves),
-                        getString(R.string.champion_talon),
-                        getString(R.string.champion_twisted_fate),
-                }));
+                android.R.id.text1,pChampions.getChampionNames()));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }

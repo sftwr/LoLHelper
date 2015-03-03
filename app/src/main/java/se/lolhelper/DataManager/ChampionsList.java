@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ChampionsList{
 
-    List pChampionsList;
+    List<Champion> pChampionsList;
 
     public ChampionsList(){
         pChampionsList = new LinkedList();
@@ -40,7 +40,7 @@ public class ChampionsList{
 
     public Champion getChampion(int _iIndex){
         if(this.getSize() > 0) {
-            Champion pTemporaryChampion = (Champion) pChampionsList.get(_iIndex);
+            Champion pTemporaryChampion = pChampionsList.get(_iIndex);
             return (pTemporaryChampion);
         }
         else return null;
