@@ -15,8 +15,8 @@ public class ItemsList{
         return(pItemsList.size());
     }
 
-    public boolean addItem(int _iItemId, String _sItemName, String _sItemDescription){
-        Item pTemporaryItem = new Item(_iItemId, _sItemName, _sItemDescription);
+    public boolean addItem(int _iItemId, String _sItemName, String _sItemDescription, String _sIcon){
+        Item pTemporaryItem = new Item(_iItemId, _sItemName, _sItemDescription, _sIcon);
         return(pItemsList.add(pTemporaryItem));
     }
 
@@ -60,15 +60,17 @@ public class ItemsList{
         private int iItemId;
         private String sItemName;
         private String sItemDescription;
+        private String sItemIcon;
 
         public Item(){
-            this(-1, null, null);
+            this(-1, null, null, null);
         }
 
-        public Item(int _iItemId, String _sItemName, String _sItemDescription){
+        public Item(int _iItemId, String _sItemName, String _sItemDescription, String _sItemIcon){
             setId(_iItemId);
             setName(_sItemName);
             setDescription(_sItemDescription);
+            setIcon(_sItemIcon);
         }
 
         public void setId(int _iItemId){
@@ -86,6 +88,11 @@ public class ItemsList{
             return;
         }
 
+        public void setIcon(String _sItemIcon){
+            this.sItemIcon = _sItemIcon;
+            return;
+        }
+
         public int getId(){
             return(this.iItemId);
         }
@@ -96,6 +103,10 @@ public class ItemsList{
 
         public String getDescription(){
             return(this.sItemDescription);
+        }
+
+        public String getIcon(){
+            return(this.sItemIcon);
         }
     }
 }

@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import se.lolhelper.DataManager.ChampionsList;
+
 
 public class LoLHelper extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -188,5 +190,4 @@ public class LoLHelper extends Activity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
-
 }

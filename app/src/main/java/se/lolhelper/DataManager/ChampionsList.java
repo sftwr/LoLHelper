@@ -15,8 +15,8 @@ public class ChampionsList{
         return(pChampionsList.size());
     }
 
-    public boolean addChampion(int _iChampionId, String _sChampionName, String _sChampionDescription){
-        Champion pTemporaryChampion = new Champion(_iChampionId, _sChampionName, _sChampionDescription);
+    public boolean addChampion(int _iChampionId, String _sChampionName, String _sChampionDescription, String _sIcon){
+        Champion pTemporaryChampion = new Champion(_iChampionId, _sChampionName, _sChampionDescription, _sIcon);
         return(pChampionsList.add(pTemporaryChampion));
     }
 
@@ -60,15 +60,17 @@ public class ChampionsList{
         private int iChampionId;
         private String sChampionName;
         private String sChampionDescription;
+        private String sChampionIcon;
 
         public Champion(){
-            this(-1, null, null);
+            this(-1, null, null, null);
         }
 
-        public Champion(int _iChampionId, String _sChampionName, String _sChampionDescription){
+        public Champion(int _iChampionId, String _sChampionName, String _sChampionDescription, String _sChampionIcon){
             setId(_iChampionId);
             setName(_sChampionName);
             setDescription(_sChampionDescription);
+            setIcon(_sChampionIcon);
         }
 
         public void setId(int _iChampionId){
@@ -86,6 +88,11 @@ public class ChampionsList{
             return;
         }
 
+        public void setIcon(String _sChampionIcon){
+            this.sChampionIcon = _sChampionIcon;
+            return;
+        }
+
         public int getId(){
             return(this.iChampionId);
         }
@@ -96,6 +103,10 @@ public class ChampionsList{
 
         public String getDescription(){
             return(this.sChampionDescription);
+        }
+
+        public String getIcon(){
+            return(this.sChampionIcon);
         }
     }
 }
