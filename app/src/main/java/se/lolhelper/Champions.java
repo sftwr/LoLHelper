@@ -74,7 +74,7 @@ public class Champions extends Activity
                 .commit();
     }
 
-    public void onSectionAttached(int number) {
+    public void onSectionAttached(int number) { // TODO: Titles must be loaded from ManagerChampions
         //updates the titlebar and the championMainText TextView
         switch (number) {
             case 1:
