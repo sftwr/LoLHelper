@@ -97,6 +97,7 @@ public class LoLHelper extends Activity
     }
 
     public void onSectionAttached(int number) {
+        //updates the titlebar and the mainText TextView
         switch (number) {
             case 1:
                 mTitle = getString(R.string.app_name);
