@@ -1,4 +1,4 @@
-package se.lolhelper.DataManager;
+package se.lolhelper.DataLists;
 
 import java.util.LinkedList;
 import java.util.List;
