@@ -14,8 +14,6 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,7 +72,7 @@ public class Champions extends Activity
                 .commit();
     }
 
-    public void onSectionAttached(int number) { // TODO: Titles must be loaded from ManagerChampions
+    public void onSectionAttached(int number) { // TODO: Titles must be loaded from ChampionsManager
         //updates the titlebar and the championMainText TextView
         switch (number) {
             case 1:

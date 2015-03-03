@@ -1,4 +1,4 @@
-package se.lolhelper;
+package se.lolhelper.Managers;
 
 /*
 Champions Manager class must be the class used to interface between all interface code and the
@@ -10,10 +10,10 @@ import java.util.List;
 
 import se.lolhelper.DataLists.ChampionsList;
 
-public class ManagerChampions {
+public class ChampionsManager {
     ChampionsList pChampions;
 
-    public ManagerChampions(){
+    public ChampionsManager(){
         pChampions = new ChampionsList();
         populateChampionsList();
     }

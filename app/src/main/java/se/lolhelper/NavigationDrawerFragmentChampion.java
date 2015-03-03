@@ -22,6 +22,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import se.lolhelper.Managers.ChampionsManager;
+
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
@@ -98,7 +100,7 @@ public class NavigationDrawerFragmentChampion extends Fragment {
             }
         });
 
-        ManagerChampions pChampions = new ManagerChampions();
+        ChampionsManager pChampions = new ChampionsManager();
 
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 // in the String[] contains all champion names

@@ -1,4 +1,4 @@
-package se.lolhelper;
+package se.lolhelper.Managers;
 
 /*
 Items Manager class must be the class used to interface between all interface code and the
@@ -10,10 +10,10 @@ import java.util.List;
 
 import se.lolhelper.DataLists.ItemsList;
 
-public class ManagerItems {
+public class ItemsManager {
     ItemsList pItems;
 
-    public ManagerItems(){
+    public ItemsManager(){
         pItems = new ItemsList();
         populateItemsList();
     }
