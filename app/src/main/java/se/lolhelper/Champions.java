@@ -125,7 +125,7 @@ public class Champions extends Activity
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.champions, menu);
+            //getMenuInflater().inflate(R.menu.champions, menu);
             restoreActionBar();
             return true;
         }
