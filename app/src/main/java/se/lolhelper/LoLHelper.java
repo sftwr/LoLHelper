@@ -21,12 +21,12 @@ import java.io.InputStreamReader;
 
 
 public class LoLHelper extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragmentLoLHelper.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
+    private NavigationDrawerFragmentLoLHelper mNavigationDrawerFragmentLoLHelper;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -39,12 +39,12 @@ public class LoLHelper extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lolhelper);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
+        mNavigationDrawerFragmentLoLHelper = (NavigationDrawerFragmentLoLHelper)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
+        mNavigationDrawerFragmentLoLHelper.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
@@ -126,7 +126,7 @@ public class LoLHelper extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+        if (!mNavigationDrawerFragmentLoLHelper.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
