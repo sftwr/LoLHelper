@@ -20,7 +20,7 @@ public class ItemsManager {
 
     private void populateItemsList(){
 
-        // This is where we load all Item data into the DataLists
+        // This is where we load all Item data_champions into the DataLists
 
         pItems.addItem(1, "item1", "item1 desc", null);
         pItems.addItem(2, "item2", "item2 desc", null);

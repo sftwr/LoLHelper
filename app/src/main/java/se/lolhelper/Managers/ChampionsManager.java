@@ -9,6 +9,7 @@ import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseLockedException;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import se.lolhelper.AppState;
 import se.lolhelper.DataLists.ChampionsList;
+import se.lolhelper.Databases.DatabaseManager;
 
 public class ChampionsManager {
     ChampionsList pChampions;
@@ -26,31 +28,24 @@ public class ChampionsManager {
     }
 
     private void populateChampionsList(){
-        Application application = (Application)AppState.getContext(); //used for non activities
-        AppState hState = (AppState)application;
+        // This is where we load all Champion data_champions into the DataLists
 
-        SQLiteDatabase hDatabase;
+//        Application application = (Application)AppState.getContext(); // Get initial class context to access correct directories
+//
+//        DatabaseManager hDatabaseManager = new DatabaseManager();
+//        hDatabaseManager.openDatabase();
+//
+//        SQLiteDatabase hDatabase = hDatabaseManager.getDatabase();
+//        Cursor hCursor = hDatabase.rawQuery("SELECT * FROM Champions", null);
+//
+//        if(hCursor.getCount() > 0) {
+//            while (hCursor.moveToNext())
+//                pChampions.addChampion(hCursor.getInt(hCursor.getColumnIndex("Id")), hCursor.getString(hCursor.getColumnIndex("ChampionName")), hCursor.getString(hCursor.getColumnIndex("ChampionDescription")), null);
+//        }
+//
+//        hDatabaseManager.closeDatabase();
+//        hCursor.close();
 
-        try { // There is an issue here that causes an error. I am not sure why yet
-            String sDatabasePath = hState.getClass().getResource("/raw/data.db").toURI().getPath();
-            hDatabase = SQLiteDatabase.openDatabase(
-                    (new File(sDatabasePath)).getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
-
-            Cursor hCursor = hDatabase.rawQuery("SELECT * FROM Champions",null);
-            if(hCursor.getCount() > 0){
-                pChampions.addChampion(hCursor.getInt(hCursor.getColumnIndex("Id")), hCursor.getString(hCursor.getColumnIndex("ChampionName")), hCursor.getString(hCursor.getColumnIndex("ChampionDescription")), null);
-            }
-        }
-        catch(Exception eError){
-            eError.printStackTrace();
-        }
-
-        // This is where we load all Champion data into the DataLists
-
-        pChampions.addChampion(1, "Syndra", "Born with immense magical potential, Syndra loves nothing more than exercising the incredible power at her command. With each passing day, her mastery of magical force grows more potent and devastating. Refusing any notion of balance or restraint, Syndra wants only to retain control of her power, even if it means annihilating the authorities that seek to stop her.", null);
-        pChampions.addChampion(2, "Elise", "Elise's entrancing beauty and grace conceal the pitiless, black heart of a deadly predator. With ruthless cunning, she lures the unsuspecting with promises of favor from the spider god. Having exchanged her humanity to become something far more sinister, Elise sacrifices the innocent to maintain her power and seemingly eternal youth. No one can fathom how many have been caught in her web, slain to feed her insatiable hunger.", null);
-        pChampions.addChampion(3, "Ahri", "Unlike other foxes that roamed the woods of southern Ionia, Ahri had always felt a strange connection to the magical world around her; a connection that was somehow incomplete. Deep inside, she felt the skin she had been born into was an ill fit for her and dreamt of one day becoming human. Her goal seemed forever out of reach, until she happened upon the wake of a human battle.", null);
-        pChampions.addChampion(4, "Amumu", "Amumu is a diminutive, animated cadaver who wanders the world, trying to discover his true identity. He rose from an ancient Shuriman tomb bound in corpse wrappings with no knowledge of his past, consumed with an uncontrollable sadness.", null);
         return;
     }
 

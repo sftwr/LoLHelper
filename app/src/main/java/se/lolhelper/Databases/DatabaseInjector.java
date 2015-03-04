@@ -1,4 +1,4 @@
-package se.lolhelper.Managers;
+package se.lolhelper.Databases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,14 +10,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class DatabaseManager extends SQLiteOpenHelper{
+public class DatabaseInjector extends SQLiteOpenHelper{
     private static String sDatabasePath = "/data/data/se.lolhelper/databases/";
-    private static String sDatabaseName = "data_champions";
-    private static String sRawDatabase = "data.db";
-    private SQLiteDatabase hDatabase;
+    private static String sDatabaseName = "data_champions.db";
+    private static String sRawDatabase = "data_champions";
     private final Context hContext;
 
-    public DatabaseManager(Context _hContext){
+    public DatabaseInjector(Context _hContext){
         super(_hContext, sDatabaseName, null, 1);
         this.hContext = _hContext;
     }
@@ -38,7 +37,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
     }
 
     private void copyDatabase(String _sDatabase) throws IOException{
-        InputStream hInputStream = hContext.getAssets().open(sRawDatabase);
+        InputStream hInputStream = hContext.getResources().openRawResource(hContext.getResources().getIdentifier(sRawDatabase, "raw", hContext.getPackageName()));
+        //InputStream hInputStream = hContext.getAssets().open(sRawDatabase); // Not sure why this isn't working
         OutputStream hOutputStream = new FileOutputStream(_sDatabase);
 
         int iLength;
@@ -55,13 +55,16 @@ public class DatabaseManager extends SQLiteOpenHelper{
         return;
     }
 
-    private void createDatabase(String _sDatabase){
+    public void injectDatabase(){
+        injectDatabase(sDatabasePath + sDatabaseName);
+        return;
+    }
+
+    private void injectDatabase(String _sDatabase){
         if(databaseExists(_sDatabase)){
             return;
         }
         else{
-            //SQLiteDatabase hTemporary = SQLiteDatabase.openDatabase(sDatabasePath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-            //hTemporary.close();
             this.getReadableDatabase();
             try{
                 copyDatabase(_sDatabase);
@@ -71,16 +74,6 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 throw new Error("Unable to copy database");
             }
         }
-    }
-
-    public boolean openDatabase(){
-        String sDatabase = sDatabasePath + sDatabaseName;
-        if(!databaseExists(sDatabase))
-            createDatabase(sDatabase);
-
-        hDatabase = SQLiteDatabase.openDatabase(sDatabase, null, SQLiteDatabase.OPEN_READONLY);
-        if(hDatabase != null) return true;
-        else return false;
     }
 
     @Override

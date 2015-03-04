@@ -2,6 +2,7 @@ package se.lolhelper;
 import android.app.Application;
 import android.content.Context;
 
+import se.lolhelper.Databases.DatabaseInjector;
 import se.lolhelper.Managers.ChampionsManager;
 import se.lolhelper.Managers.ItemsManager;
 
@@ -31,4 +32,9 @@ public class AppState extends Application {
     public static Context getContext(){
         return mContext;
     }
+
+//    public void setContext(Context _hContext){
+//        this.mContext = _hContext;
+//        return;
+//    }
 }
