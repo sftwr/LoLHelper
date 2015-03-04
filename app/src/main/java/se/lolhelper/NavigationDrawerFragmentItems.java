@@ -3,7 +3,6 @@ package se.lolhelper;
 
 import android.app.Activity;
 import android.app.ActionBar;
-import android.app.Application;
 import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -23,14 +22,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import se.lolhelper.Managers.ChampionsManager;
-
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragmentChampion extends Fragment {
+public class NavigationDrawerFragmentItems extends Fragment {
 
     /**
      * Remember the position of the selected item.
@@ -61,7 +58,7 @@ public class NavigationDrawerFragmentChampion extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
-    public NavigationDrawerFragmentChampion() {
+    public NavigationDrawerFragmentItems() {
     }
 
     @Override
@@ -83,7 +80,7 @@ public class NavigationDrawerFragmentChampion extends Fragment {
     }
 
     @Override
-    public void onActivityCreated (Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
@@ -91,25 +88,24 @@ public class NavigationDrawerFragmentChampion extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
-                R.layout.fragment_navigation_drawer_champions, container, false);
+                R.layout.fragment_navigation_drawer_items, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
             }
         });
-
-        //ChampionsManager pChampions = new ChampionsManager();
-        Application application = (Application)AppState.getContext();
-        AppState myState = (AppState)application;
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                // in the String[] contains all champion names
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                myState.pChampionsData.getChampionNames()));
+                new String[]{
+                        getString(R.string.title_section1),
+                        getString(R.string.title_section2),
+                        getString(R.string.title_section3),
+                }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
@@ -267,7 +263,7 @@ public class NavigationDrawerFragmentChampion extends Fragment {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setTitle(R.string.title_champions);
+        actionBar.setTitle(R.string.title_items);
     }
 
     private ActionBar getActionBar() {

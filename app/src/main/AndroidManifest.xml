@@ -3,6 +3,7 @@
     package="se.lolhelper" >
 
     <application
+        android:name=".AppState"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,6 +20,10 @@
         <activity
             android:name=".Champions"
             android:label="@string/title_activity_champions" >
+        </activity>
+        <activity
+            android:name=".Items"
+            android:label="@string/title_activity_items" >
         </activity>
     </application>
 

@@ -3,7 +3,6 @@ package se.lolhelper;
 import android.app.Activity;
 
 import android.app.ActionBar;
-import android.app.Application;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -13,57 +12,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
-public class Champions extends Activity
-        implements NavigationDrawerFragmentChampion.NavigationDrawerCallbacks {
+public class Items extends Activity
+        implements NavigationDrawerFragmentItems.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
-    private NavigationDrawerFragmentChampion mNavigationDrawerFragmentChampion;
+    private NavigationDrawerFragmentItems mNavigationDrawerFragmentItems;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-    TextView championMainText;
-    private AppState myState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_champions);
+        setContentView(R.layout.activity_items);
 
-        mNavigationDrawerFragmentChampion = (NavigationDrawerFragmentChampion)
+        mNavigationDrawerFragmentItems = (NavigationDrawerFragmentItems)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
-        mNavigationDrawerFragmentChampion.setUp(
+        mNavigationDrawerFragmentItems.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-        championMainText = (TextView) findViewById(R.id.championMainTextID);
-        myState = (AppState) getApplicationContext();
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
     }
 
     @Override
@@ -75,53 +51,18 @@ public class Champions extends Activity
                 .commit();
     }
 
-    public void onSectionAttached(int number) { // TODO: Titles must be loaded from ChampionsManager
-        //updates the titlebar and the championMainText TextView
-//        switch (number) {
-//            case 1:
-//                mTitle = getString(R.string.title_champions);
-//                setChampionMainTextFromFile("champions_home");
-//                break;
-//            case 2:
-//                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_graves);
-//                break;
-//            case 3:
-//                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_talon);
-//                break;
-//            case 4:
-//                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_twisted_fate);
-//                break;
-//        }
-        number--; //sections start with 1, champion IDs start with 0
-        mTitle = myState.pChampionsData.getChampionName(number);
-        setChampionMainText(number);
-    }
-
-    public void setChampionMainTextFromFile(String name){
-        //get the raw resource text file using the name parameter
-        //clear the championMainText and then append the contents of the file to the field.
-        InputStream is = getResources().openRawResource(getResources().getIdentifier(name, "raw", getPackageName()));
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        String line = null;
-        try {
-            clearMainText();
-            while((line = br.readLine()) != null){
-                championMainText.append(line);
-                championMainText.append("\n");
-            }
-        } catch (IOException e){
-            e.printStackTrace();
+    public void onSectionAttached(int number) {
+        switch (number) {
+            case 1:
+                mTitle = getString(R.string.title_section1);
+                break;
+            case 2:
+                mTitle = getString(R.string.title_section2);
+                break;
+            case 3:
+                mTitle = getString(R.string.title_section3);
+                break;
         }
-    }
-
-    public void setChampionMainText(int _iIndex){
-        clearMainText();
-        championMainText.append(myState.pChampionsData.getChampionDescription(_iIndex));
-    }
-
-    public void clearMainText(){
-        //clears the championMainText
-        championMainText.setText("");
     }
 
     public void restoreActionBar() {
@@ -134,11 +75,11 @@ public class Champions extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragmentChampion.isDrawerOpen()) {
+        if (!mNavigationDrawerFragmentItems.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
-            //getMenuInflater().inflate(R.menu.champions, menu);
+            getMenuInflater().inflate(R.menu.items, menu);
             restoreActionBar();
             return true;
         }
@@ -151,9 +92,12 @@ public class Champions extends Activity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -184,15 +128,15 @@ public class Champions extends Activity
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_champions, container, false);
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_items, container, false);
             return rootView;
         }
 
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((Champions) activity).onSectionAttached(
+            ((Items) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
