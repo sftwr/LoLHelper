@@ -80,7 +80,7 @@ public class Champions extends Activity
 //        switch (number) {
 //            case 1:
 //                mTitle = getString(R.string.title_champions);
-//                setChampionMainTextFromFile("champions_home");
+//                setChampionMainTextFromFile("home_champions");
 //                break;
 //            case 2:
 //                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_graves);
@@ -92,7 +92,7 @@ public class Champions extends Activity
 //                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_twisted_fate);
 //                break;
 //        }
-        number--; //sections start with 1, champion IDs start with 0
+        number--; //
         mTitle = myState.pChampionsData.getChampionName(number);
         setChampionMainText(number);
     }

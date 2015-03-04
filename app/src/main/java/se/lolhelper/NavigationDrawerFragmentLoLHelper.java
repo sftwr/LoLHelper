@@ -212,6 +212,11 @@ public class NavigationDrawerFragmentLoLHelper extends Fragment {
         if (mCurrentSelectedPosition == 1){
             gotoChampionsActivity(getView());
         }
+
+        //Go to items
+        if (mCurrentSelectedPosition == 2){
+            gotoItemsActivity(getView());
+        }
     }
 
     public void gotoChampionsActivity(View v){
@@ -222,8 +227,8 @@ public class NavigationDrawerFragmentLoLHelper extends Fragment {
 
     public void gotoItemsActivity(View v){
         //Starts items activity
-        //Intent intent = new Intent(getActivity(), Items.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getActivity(), Items.class);
+        startActivity(intent);
     }
 
 

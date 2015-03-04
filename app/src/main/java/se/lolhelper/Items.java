@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.TextView;
 
 
 public class Items extends Activity
@@ -26,6 +27,8 @@ public class Items extends Activity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private AppState myState;
+    TextView itemMainText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class Items extends Activity
         mNavigationDrawerFragmentItems.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+        myState = (AppState) getApplicationContext();
+        itemMainText = (TextView) findViewById(R.id.itemMainTextID);
     }
 
     @Override
@@ -52,17 +57,30 @@ public class Items extends Activity
     }
 
     public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
+//        switch (number) {
+//            case 1:
+//                mTitle = getString(R.string.title_section1);
+//                break;
+//            case 2:
+//                mTitle = getString(R.string.title_section2);
+//                break;
+//            case 3:
+//                mTitle = getString(R.string.title_section3);
+//                break;
+//        }
+        number--; //
+        mTitle = myState.pItemsData.getItemName(number);
+        setItemMainText(number);
+    }
+
+    public void setItemMainText(int _iIndex){
+        clearMainText();
+        itemMainText.append(myState.pItemsData.getItemDescription(_iIndex));
+    }
+
+    public void clearMainText(){
+        //clears the itemMainText
+        itemMainText.setText("");
     }
 
     public void restoreActionBar() {
