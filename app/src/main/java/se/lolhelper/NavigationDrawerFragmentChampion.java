@@ -3,6 +3,7 @@ package se.lolhelper;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Application;
 import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -100,14 +101,15 @@ public class NavigationDrawerFragmentChampion extends Fragment {
             }
         });
 
-        ChampionsManager pChampions = new ChampionsManager();
-
+        //ChampionsManager pChampions = new ChampionsManager();
+        Application application = (Application)AppState.getContext();
+        AppState myState = (AppState)application;
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 // in the String[] contains all champion names
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                pChampions.getChampionNames()));
+                myState.pChampionsData.getChampionNames()));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }

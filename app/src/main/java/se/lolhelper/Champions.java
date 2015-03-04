@@ -3,6 +3,7 @@ package se.lolhelper;
 import android.app.Activity;
 
 import android.app.ActionBar;
+import android.app.Application;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class Champions extends Activity
      */
     private CharSequence mTitle;
     TextView championMainText;
+    private AppState myState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class Champions extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         championMainText = (TextView) findViewById(R.id.championMainTextID);
+        myState = (AppState) getApplicationContext();
 
     }
 
@@ -74,24 +77,27 @@ public class Champions extends Activity
 
     public void onSectionAttached(int number) { // TODO: Titles must be loaded from ChampionsManager
         //updates the titlebar and the championMainText TextView
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_champions);
-                setMainText("champions_home");
-                break;
-            case 2:
-                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_graves);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_talon);
-                break;
-            case 4:
-                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_twisted_fate);
-                break;
-        }
+//        switch (number) {
+//            case 1:
+//                mTitle = getString(R.string.title_champions);
+//                setChampionMainTextFromFile("champions_home");
+//                break;
+//            case 2:
+//                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_graves);
+//                break;
+//            case 3:
+//                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_talon);
+//                break;
+//            case 4:
+//                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_twisted_fate);
+//                break;
+//        }
+        number--; //sections start with 1, champion IDs start with 0
+        mTitle = myState.pChampionsData.getChampionName(number);
+        setChampionMainText(number);
     }
 
-    public void setMainText(String name){
+    public void setChampionMainTextFromFile(String name){
         //get the raw resource text file using the name parameter
         //clear the championMainText and then append the contents of the file to the field.
         InputStream is = getResources().openRawResource(getResources().getIdentifier(name, "raw", getPackageName()));
@@ -106,6 +112,11 @@ public class Champions extends Activity
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void setChampionMainText(int _iIndex){
+        clearMainText();
+        championMainText.append(myState.pChampionsData.getChampionDescription(_iIndex));
     }
 
     public void clearMainText(){
