@@ -5,6 +5,10 @@ Champions Manager class must be the class used to interface between all interfac
 ChampionsList. ChampionsList should not be invoked directly as to avoid an increase in coupling
 */
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +23,22 @@ public class ChampionsManager {
     }
 
     private void populateChampionsList(){
+
+        SQLiteDatabase hDatabase;
+
+        try { // There is an issue here that causes an error. I am not sure why yet
+            String sDatabasePath = getClass().getResource("/res/raw/data.db").toURI().getPath();
+            hDatabase = SQLiteDatabase.openDatabase(
+                    (new File(sDatabasePath)).getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
+
+            Cursor hCursor = hDatabase.rawQuery("SELECT * FROM Champions",null);
+            if(hCursor.getCount() > 0){
+                pChampions.addChampion(hCursor.getInt(hCursor.getColumnIndex("Id")), hCursor.getString(hCursor.getColumnIndex("ChampionName")), hCursor.getString(hCursor.getColumnIndex("ChampionDescription")), null);
+            }
+        }
+        catch(Exception eError){
+            eError.printStackTrace();
+        }
 
         // This is where we load all Champion data into the DataLists
 
