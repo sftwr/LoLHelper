@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import se.lolhelper.Managers.DatabaseManager;
 
 public class LoLHelper extends Activity
         implements NavigationDrawerFragmentLoLHelper.NavigationDrawerCallbacks {
@@ -36,6 +37,15 @@ public class LoLHelper extends Activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        try {
+            DatabaseManager hDatabase = new DatabaseManager(this);
+            hDatabase.openDatabase();
+        }
+        catch (Error eError){
+            eError.printStackTrace();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lolhelper);
 

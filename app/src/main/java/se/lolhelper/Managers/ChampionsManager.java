@@ -26,11 +26,13 @@ public class ChampionsManager {
     }
 
     private void populateChampionsList(){
-        Context hContext = (Application) AppState.getContext();
+        Application application = (Application)AppState.getContext(); //used for non activities
+        AppState hState = (AppState)application;
+
         SQLiteDatabase hDatabase;
 
         try { // There is an issue here that causes an error. I am not sure why yet
-            String sDatabasePath = hContext.getClass().getResource("/res/raw/data.db").toURI().getPath();
+            String sDatabasePath = hState.getClass().getResource("/raw/data.db").toURI().getPath();
             hDatabase = SQLiteDatabase.openDatabase(
                     (new File(sDatabasePath)).getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
 
