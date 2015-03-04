@@ -5,6 +5,8 @@ Champions Manager class must be the class used to interface between all interfac
 ChampionsList. ChampionsList should not be invoked directly as to avoid an increase in coupling
 */
 
+import android.app.Application;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -12,6 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.lolhelper.AppState;
 import se.lolhelper.DataLists.ChampionsList;
 
 public class ChampionsManager {
@@ -23,11 +26,11 @@ public class ChampionsManager {
     }
 
     private void populateChampionsList(){
-
+        Context hContext = (Application) AppState.getContext();
         SQLiteDatabase hDatabase;
 
         try { // There is an issue here that causes an error. I am not sure why yet
-            String sDatabasePath = getClass().getResource("/res/raw/data.db").toURI().getPath();
+            String sDatabasePath = hContext.getClass().getResource("/res/raw/data.db").toURI().getPath();
             hDatabase = SQLiteDatabase.openDatabase(
                     (new File(sDatabasePath)).getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
 
