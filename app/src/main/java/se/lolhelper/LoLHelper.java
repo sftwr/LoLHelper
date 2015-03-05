@@ -40,6 +40,7 @@ public class LoLHelper extends Activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //gets the AppState
         Application application = (Application)AppState.getContext();
         AppState hState = (AppState)application;
 

@@ -49,8 +49,11 @@ public class Champions extends Activity
         mNavigationDrawerFragmentChampion.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-        championMainText = (TextView) findViewById(R.id.championMainTextID);
+
         myState = (AppState) getApplicationContext();
+
+        //gets the id of the textview and sets the scrolling method
+        championMainText = (TextView) findViewById(R.id.championMainTextID);
         championMainText.setMovementMethod(new ScrollingMovementMethod());
 
     }
@@ -94,6 +97,8 @@ public class Champions extends Activity
 //                mTitle = getString(R.string.title_champions) + " - " + getString(R.string.champion_twisted_fate);
 //                break;
 //        }
+        //updates the title using the name of the champion
+        //updates the text using the section selected
         number--; //
         mTitle = myState.pChampionsData.getChampionName(number);
         setChampionMainText(number);
@@ -117,6 +122,8 @@ public class Champions extends Activity
     }
 
     public void setChampionMainText(int _iIndex){
+        //clears the championMainText and then append the contents of pChampionData to the text
+        //where pChampionData is the manager for champion data
         clearMainText();
         championMainText.append(myState.pChampionsData.getChampionDescription(_iIndex));
     }

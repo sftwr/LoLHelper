@@ -45,6 +45,8 @@ public class Items extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         myState = (AppState) getApplicationContext();
+
+        //gets the id of the textview and sets the scrolling method
         itemMainText = (TextView) findViewById(R.id.itemMainTextID);
         itemMainText.setMovementMethod(new ScrollingMovementMethod());
     }
@@ -70,12 +72,16 @@ public class Items extends Activity
 //                mTitle = getString(R.string.title_section3);
 //                break;
 //        }
+        //updates the title using the name of the item
+        //updates the text using the section selected
         number--; //
         mTitle = myState.pItemsData.getItemName(number);
         setItemMainText(number);
     }
 
     public void setItemMainText(int _iIndex){
+        //clears the itemMainText and then append the descrip of pItemData to the text
+        //where pItemsData is the manager for item data
         clearMainText();
         itemMainText.append(myState.pItemsData.getItemDescription(_iIndex));
     }
