@@ -17,9 +17,6 @@ public class DatabaseManager {
             hDatabase = SQLiteDatabase.openDatabase(sDatabase, null, SQLiteDatabase.OPEN_READONLY);
         }
         catch(SQLiteException eError){
-            Application hApplication = (Application) AppState.getContext();
-            DatabaseInjector hDatabaseInjector = new DatabaseInjector(hApplication);
-            hDatabaseInjector.injectDatabase();
             eError.printStackTrace();
             throw new Error("Unable to open database");
         }
