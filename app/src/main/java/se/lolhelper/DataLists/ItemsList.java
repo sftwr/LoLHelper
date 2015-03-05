@@ -3,7 +3,7 @@ package se.lolhelper.DataLists;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ItemsList{
+public class ItemsList{ // Linked list of all items available
 
     List<Item> pItemsList;
 

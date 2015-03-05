@@ -3,7 +3,7 @@ package se.lolhelper.DataLists;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ChampionsList{
+public class ChampionsList{ // Linked list of all Champions available
 
     List<Champion> pChampionsList;
 
