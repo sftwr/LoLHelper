@@ -30,21 +30,21 @@ public class ChampionsManager {
     private void populateChampionsList(){
         // This is where we load all Champion data_champions into the DataLists
 
-//        Application application = (Application)AppState.getContext(); // Get initial class context to access correct directories
-//
-//        DatabaseManager hDatabaseManager = new DatabaseManager();
-//        hDatabaseManager.openDatabase();
-//
-//        SQLiteDatabase hDatabase = hDatabaseManager.getDatabase();
-//        Cursor hCursor = hDatabase.rawQuery("SELECT * FROM Champions", null);
-//
-//        if(hCursor.getCount() > 0) {
-//            while (hCursor.moveToNext())
-//                pChampions.addChampion(hCursor.getInt(hCursor.getColumnIndex("Id")), hCursor.getString(hCursor.getColumnIndex("ChampionName")), hCursor.getString(hCursor.getColumnIndex("ChampionDescription")), null);
-//        }
-//
-//        hDatabaseManager.closeDatabase();
-//        hCursor.close();
+        Application application = (Application)AppState.getContext(); // Get initial class context to access correct directories
+
+        DatabaseManager hDatabaseManager = new DatabaseManager();
+        hDatabaseManager.openDatabase();
+
+        SQLiteDatabase hDatabase = hDatabaseManager.getDatabase();
+        Cursor hCursor = hDatabase.rawQuery("SELECT * FROM Champions", null);
+
+        if(hCursor.getCount() > 0) {
+            while (hCursor.moveToNext())
+                pChampions.addChampion(hCursor.getInt(hCursor.getColumnIndex("Id")), hCursor.getString(hCursor.getColumnIndex("ChampionName")), hCursor.getString(hCursor.getColumnIndex("ChampionDescription")), null);
+        }
+
+        hDatabaseManager.closeDatabase();
+        hCursor.close();
 
         return;
     }

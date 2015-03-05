@@ -24,13 +24,17 @@ public class AppState extends Application {
 
 
     public AppState(){
-        pChampionsData = new ChampionsManager();
-        pItemsData = new ItemsManager();
+        pChampionsData = null;
+        pItemsData = null;
         this.mContext = this;
     }
 
     public static Context getContext(){
         return mContext;
+    }
+
+    public void setChampionsData(ChampionsManager _pChampionsData){
+        pChampionsData = _pChampionsData;
     }
 
 //    public void setContext(Context _hContext){
