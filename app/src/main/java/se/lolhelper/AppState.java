@@ -37,6 +37,10 @@ public class AppState extends Application {
         pChampionsData = _pChampionsData;
     }
 
+    public void setItemsData(ItemsManager _pItemsData){
+        pItemsData = _pItemsData;
+    }
+
 //    public void setContext(Context _hContext){
 //        this.mContext = _hContext;
 //        return;

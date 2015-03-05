@@ -22,6 +22,7 @@ import java.io.InputStreamReader;
 
 import se.lolhelper.Databases.DatabaseInjector;
 import se.lolhelper.Managers.ChampionsManager;
+import se.lolhelper.Managers.ItemsManager;
 
 public class LoLHelper extends Activity
         implements NavigationDrawerFragmentLoLHelper.NavigationDrawerCallbacks {
@@ -40,12 +41,13 @@ public class LoLHelper extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Application application = (Application)AppState.getContext();
-        AppState myState = (AppState)application;
+        AppState hState = (AppState)application;
 
         DatabaseInjector hDatabase = new DatabaseInjector(this);
         hDatabase.injectDatabase();
 
-        myState.setChampionsData(new ChampionsManager());
+        hState.setChampionsData(new ChampionsManager());
+        hState.setItemsData(new ItemsManager());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lolhelper);
