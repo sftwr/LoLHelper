@@ -1,10 +1,11 @@
 package se.lolhelper.Databases;
 
-import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-import se.lolhelper.AppState;
+// Utilizes the Android API to access a database located in the applications
+// /data/data/databases folder.
+
 
 public class DatabaseManager {
     private static String sDatabasePath = "/data/data/se.lolhelper/databases/";
@@ -24,7 +25,7 @@ public class DatabaseManager {
         else return false;
     }
 
-    public boolean closeDatabase(){
+    public boolean closeDatabase(){ // Closes the database
         if(hDatabase.isOpen()){
             hDatabase.close();
             return true;
@@ -32,7 +33,7 @@ public class DatabaseManager {
         else return true;
     }
 
-    public SQLiteDatabase getDatabase(){
+    public SQLiteDatabase getDatabase(){ // Returns the opened database object
         if(hDatabase.isOpen()){
             return hDatabase;
         }

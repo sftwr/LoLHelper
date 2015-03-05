@@ -1,23 +1,14 @@
 package se.lolhelper.Managers;
 
-/*
-Champions Manager class must be the class used to interface between all interface code and the
-ChampionsList. ChampionsList should not be invoked directly as to avoid an increase in coupling
-*/
-
-import android.app.Application;
-import android.content.Context;
+import java.util.List;
+import java.util.ArrayList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import se.lolhelper.AppState;
 import se.lolhelper.DataLists.ChampionsList;
 import se.lolhelper.Databases.DatabaseManager;
+
+// Champions Manager class must be the class used to interface between all interface code and the
+// ChampionsList. ChampionsList should not be invoked directly as to avoid an increase in coupling
 
 public class ChampionsManager {
     ChampionsList pChampions;

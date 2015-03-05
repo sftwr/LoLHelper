@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+// Injects database in the Resources folder into the appropriate Android folder
+// Such that the database can be accessed through the Android API
+
 public class DatabaseInjector extends SQLiteOpenHelper{
     private static String sDatabasePath = "/data/data/se.lolhelper/databases/";
     private static String sDatabaseName = "data_champions.db";
@@ -21,7 +24,7 @@ public class DatabaseInjector extends SQLiteOpenHelper{
         this.hContext = _hContext;
     }
 
-    private boolean databaseExists(String _sDatabase){
+    private boolean databaseExists(String _sDatabase){ // Checks whether the database already exists
         SQLiteDatabase hTemporary = null;
         try{
             hTemporary = SQLiteDatabase.openDatabase(_sDatabase, null, SQLiteDatabase.OPEN_READONLY);
@@ -36,9 +39,8 @@ public class DatabaseInjector extends SQLiteOpenHelper{
         return false;
     }
 
-    private void copyDatabase(String _sDatabase) throws IOException{
+    private void copyDatabase(String _sDatabase) throws IOException{ // Copies the contents of the resource into the created databse
         InputStream hInputStream = hContext.getResources().openRawResource(hContext.getResources().getIdentifier(sRawDatabase, "raw", hContext.getPackageName()));
-        //InputStream hInputStream = hContext.getAssets().open(sRawDatabase); // Not sure why this isn't working
         OutputStream hOutputStream = new FileOutputStream(_sDatabase);
 
         int iLength;
@@ -65,7 +67,7 @@ public class DatabaseInjector extends SQLiteOpenHelper{
             return;
         }
         else{
-            this.getReadableDatabase();
+            this.getReadableDatabase(); // Creates the database
             try{
                 copyDatabase(_sDatabase);
             }

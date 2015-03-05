@@ -1,10 +1,5 @@
 package se.lolhelper.Managers;
 
-/*
-Items Manager class must be the class used to interface between all interface code and the
-ItemsList. ItemsList should not be invoked directly as to avoid an increase in coupling
-*/
-
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -13,6 +8,9 @@ import java.util.List;
 
 import se.lolhelper.DataLists.ItemsList;
 import se.lolhelper.Databases.DatabaseManager;
+
+// Items Manager class must be the class used to interface between all interface code and the
+// ItemsList. ItemsList should not be invoked directly as to avoid an increase in coupling
 
 public class ItemsManager {
     ItemsList pItems;
