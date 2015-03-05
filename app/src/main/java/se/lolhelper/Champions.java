@@ -41,6 +41,8 @@ public class Champions extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champions);
 
+        myState = (AppState) getApplicationContext();
+
         mNavigationDrawerFragmentChampion = (NavigationDrawerFragmentChampion)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -50,7 +52,7 @@ public class Champions extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        myState = (AppState) getApplicationContext();
+        //myState = (AppState) getApplicationContext();
 
         //gets the id of the textview and sets the scrolling method
         championMainText = (TextView) findViewById(R.id.championMainTextID);
