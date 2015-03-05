@@ -36,6 +36,8 @@ public class Items extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items);
 
+        myState = (AppState) getApplicationContext();
+
         mNavigationDrawerFragmentItems = (NavigationDrawerFragmentItems)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -44,7 +46,7 @@ public class Items extends Activity
         mNavigationDrawerFragmentItems.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-        myState = (AppState) getApplicationContext();
+        //myState = (AppState) getApplicationContext();
 
         //gets the id of the textview and sets the scrolling method
         itemMainText = (TextView) findViewById(R.id.itemMainTextID);
