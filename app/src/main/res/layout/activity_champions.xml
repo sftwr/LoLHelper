@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="New Text"
+            android:scrollbars = "vertical"
             android:id="@+id/championMainTextID"
             android:layout_gravity="left|top" />
     </FrameLayout>

@@ -7,6 +7,7 @@ import android.app.Application;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +51,7 @@ public class Champions extends Activity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         championMainText = (TextView) findViewById(R.id.championMainTextID);
         myState = (AppState) getApplicationContext();
+        championMainText.setMovementMethod(new ScrollingMovementMethod());
 
     }
 

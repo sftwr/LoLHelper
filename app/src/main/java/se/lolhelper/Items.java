@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,6 +46,7 @@ public class Items extends Activity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         myState = (AppState) getApplicationContext();
         itemMainText = (TextView) findViewById(R.id.itemMainTextID);
+        itemMainText.setMovementMethod(new ScrollingMovementMethod());
     }
 
     @Override
