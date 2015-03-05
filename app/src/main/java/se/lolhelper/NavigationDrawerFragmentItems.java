@@ -3,6 +3,7 @@ package se.lolhelper;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Application;
 import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -89,6 +90,8 @@ public class NavigationDrawerFragmentItems extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Application application = (Application)AppState.getContext();
+        AppState myState = (AppState)application;
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer_items, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,11 +104,7 @@ public class NavigationDrawerFragmentItems extends Fragment {
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                }));
+                myState.pItemsData.getItemNames()));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
