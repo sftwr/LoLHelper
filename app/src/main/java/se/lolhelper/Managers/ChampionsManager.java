@@ -30,8 +30,6 @@ public class ChampionsManager {
     private void populateChampionsList(){
         // This is where we load all Champion data_champions into the DataLists
 
-        Application application = (Application)AppState.getContext(); // Get initial class context to access correct directories
-
         DatabaseManager hDatabaseManager = new DatabaseManager();
         hDatabaseManager.openDatabase();
 

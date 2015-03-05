@@ -43,7 +43,7 @@ public class LoLHelper extends Activity
         Application application = (Application)AppState.getContext();
         AppState hState = (AppState)application;
 
-        DatabaseInjector hDatabase = new DatabaseInjector(this);
+        DatabaseInjector hDatabase = new DatabaseInjector(this); // Inject database
         hDatabase.injectDatabase();
 
         hState.setChampionsData(new ChampionsManager());

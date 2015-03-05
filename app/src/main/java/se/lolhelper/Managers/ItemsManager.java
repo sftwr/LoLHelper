@@ -5,10 +5,14 @@ Items Manager class must be the class used to interface between all interface co
 ItemsList. ItemsList should not be invoked directly as to avoid an increase in coupling
 */
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import se.lolhelper.DataLists.ItemsList;
+import se.lolhelper.Databases.DatabaseManager;
 
 public class ItemsManager {
     ItemsList pItems;
@@ -19,13 +23,22 @@ public class ItemsManager {
     }
 
     private void populateItemsList(){
+        // This is where we load all Champion data_champions into the DataLists
 
-        // This is where we load all Item data_champions into the DataLists
+        DatabaseManager hDatabaseManager = new DatabaseManager();
+        hDatabaseManager.openDatabase();
 
-        pItems.addItem(1, "item1", "item1 desc", null);
-        pItems.addItem(2, "item2", "item2 desc", null);
-        pItems.addItem(3, "item3", "item3 desc", null);
-        pItems.addItem(4, "item4", "item4 desc", null);
+        SQLiteDatabase hDatabase = hDatabaseManager.getDatabase();
+        Cursor hCursor = hDatabase.rawQuery("SELECT * FROM Items", null);
+
+        if(hCursor.getCount() > 0) {
+            while (hCursor.moveToNext())
+                pItems.addItem(hCursor.getInt(hCursor.getColumnIndex("Id")), hCursor.getString(hCursor.getColumnIndex("ItemName")), hCursor.getString(hCursor.getColumnIndex("ItemDescription")), null);
+        }
+
+        hDatabaseManager.closeDatabase();
+        hCursor.close();
+
         return;
     }
 
