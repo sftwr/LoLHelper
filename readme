@@ -1,0 +1,60 @@
+Team Members:   Victor Chen;    Ahmed Khalaf;
+SE 4365 - Software Project Management
+Project #2
+
+Related github:https://github.com/sftwr/LoLHelper
+
+The UML and Sequence Diagrams are in the zip folder.
+
+app-debug.apk is the apk to install the application on an android device.
+
+To run this application using an emulator follow these steps:
+
+METHOD 1: ANDROID DEVICE
+
+1. Use the APK provided to install LoLHelper on your personal android device!.
+
+METHOD 2: ANDROID STUDIO & EMULATOR
+
+1. Install Java RE and Java JDK (https://ninite.com/java-jdk)
+
+2. Install Android Studio (https://developer.android.com/sdk/index.html)
+    2.1. Follow the steps of the installer
+
+3. Start Android Studio.
+
+4. If prompted about an error about the SDK then you will need to configure your class path before continuing.
+    4.1 configuring class path (http://javarevisited.blogspot.com/2013/02/windows-8-set-path-and-classpath-java-windows-7.html)
+
+5. Choose the configure option.
+
+6. Choose SDK Manager
+
+7. Check the boxes corresponding to:
+    a. Everything under the grouping of Android 5.0.1 (API 21)
+    b. Everything under the grouping of Android 4.3 (API 18)
+    c. Android Support Repository
+    d. Android Support Library
+    e. Google USB Drive
+
+8. Allow downloads to complete.
+
+9. Android Studio should create a default emulator for you which you can view by going to Tools->Android->AVD Manager (You will need to start a new project to see this toolbar)
+    9.1. If you checked to see if there is a default emulator, close the project afterwards to return to the welcome screen.
+
+10. The github is located at the top of this readme or (https://github.com/sftwr/LoLHelper.git) is the exact github address.
+
+11. On the welcome screen of Android Studio, go to Check out from Version Control and select github.
+
+12. Paste in the github address (see step 10). Choose a directory to save it in and name the directory LoLHelper.
+
+13. Go to tools->android->avd manager. Select an emulator to start (Nexus 5 API 21 x86 should be one of the default ones android studio provides).
+    13.1. Wait for the emulator to get to the locked screen. Unlock the phone by dragging if it is locked.
+
+14. Use the green arrow OR go to run->Run 'app' to run the app.
+
+15. A prompt will appear, select the Nexus 5 API 21 x86.
+
+16. Wait for the installation to complete.
+
+17. Use the application!
