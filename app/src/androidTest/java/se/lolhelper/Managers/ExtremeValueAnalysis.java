@@ -21,9 +21,47 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
         pItemsManager       = new ItemsManager();
         bTestsPassed        = new boolean[5];
 
+        testAddChampion(1);
+        testAddItem(2);
+
+        pChampionsManager   = new ChampionsManager();
+        pItemsManager       = new ItemsManager();
+
         testGetChampionName(3);
         testGetItemName(4);
         testDelChampion(5);
+    }
+
+    public void testAddItem(int _iTestNumber){
+        _iTestNumber        = _iTestNumber - 1;
+
+        int iIndex         = 2147483647;
+        String sName        = "Test";
+        String sDescription = "Test";
+
+        boolean bReturnValue = pItemsManager.pItems.addItem(iIndex, sName, sDescription, null);
+        if(bReturnValue)
+            bTestsPassed[_iTestNumber] = true;
+        else
+            bTestsPassed[_iTestNumber] = false;
+
+        assertEquals("EVA_01.0", true, bTestsPassed[_iTestNumber]);
+    }
+
+    public void testAddChampion(int _iTestNumber){
+        _iTestNumber        = _iTestNumber - 1;
+
+        int iIndex         = 2147483647;
+        String sName        = "Test";
+        String sDescription = "Test";
+
+        boolean bReturnValue = pChampionsManager.pChampions.addChampion(iIndex, sName, sDescription, null);
+        if(bReturnValue)
+            bTestsPassed[_iTestNumber] = true;
+        else
+            bTestsPassed[_iTestNumber] = false;
+
+        assertEquals("EVA_02.0", true, bTestsPassed[_iTestNumber]);
     }
 
     // Test EVA03.0
