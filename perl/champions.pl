@@ -9,8 +9,10 @@ use DBI;
 &main();
 
 sub main(){
+	unlink("champions.db");
 	my $hDatabase = &connectToDatabase();
-	#&createTables($hDatabase);
+	
+	&createTables($hDatabase);
 	&getChampionList();
 	&getChampionsData($hDatabase);
 	&disconnectFromDatabase();
@@ -52,12 +54,17 @@ sub getChampionsData(){
 	my $iCounter = 1;
 
 	foreach my $sChampion (@aChampionsList){
-		$sChampion = lc($sChampion);
-		$sChampion =~ tr/'. //d; # Remove unknown characters
+		my $hStatement = $hDatabase->prepare(
+			qq(INSERT INTO Champions (
+				Id,
+				ChampionName,
+				ChampionDescription
+				) VALUES (
+				?,
+				?,
+				?)));
 
-		my $hStatement = $hDatabase->prepare("INSERT INTO Champions (Id, ChampionName, ChampionDescription) VALUES ($iCounter, \'$sChampion\', \'".getChampionData($sChampion)."\')");
-		$hStatement->execute();
-
+		$hStatement->execute($iCounter, $sChampion, getChampionData($sChampion));
 		$iCounter++;
 	}
 	return;
@@ -67,6 +74,7 @@ sub getChampionData(){
 	my ($sChampion) = @_;
 
 	my $hMechanize = WWW::Mechanize->new();
+	$sChampion = lc($sChampion);
 	$hMechanize->get("http://gameinfo.na.leagueoflegends.com/en/game-info/champions/$sChampion/");
 
 	return(parseData($hMechanize->content()));
