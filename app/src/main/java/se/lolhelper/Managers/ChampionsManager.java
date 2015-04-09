@@ -84,6 +84,10 @@ public class ChampionsManager {
         return("Not Found"); // <-- Should be a generic icon
     }
 
+    public ChampionsList getChampionsList(){
+        return(this.pChampions);
+    }
+
     public String[] getChampionNames(){
         int iCounter = 0;
         List<String> sChampionNames = new ArrayList();
