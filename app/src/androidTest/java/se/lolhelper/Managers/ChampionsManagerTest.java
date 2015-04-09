@@ -55,7 +55,7 @@ public class ChampionsManagerTest extends AndroidTestCase {
             }
         }
 
-        assertEquals("BVA_01.0: Passed", true, finalResult);
+        assertEquals("BVA_01.0", true, finalResult);
 
     }
 }
