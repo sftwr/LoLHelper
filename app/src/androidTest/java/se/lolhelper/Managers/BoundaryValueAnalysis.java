@@ -34,10 +34,20 @@ public class BoundaryValueAnalysis extends AndroidTestCase {
     }
 
     private void runCatch(int position){
+        //for IndexOutOfBoundsException
         if (position == 0 || position == 5){  //Expected to be out of bounds
             passed[position] = true;
         } else {                //Expected to NOT be out of bounds
             passed[position] = false;
+        }
+    }
+
+    private void runCatchNullPointerException(int position){
+        //for NullPointerException
+        if (position == 0 || position == 5){  //Expected to be out of bounds
+            passed[position] = false;
+        } else {                //Expected to be Null Pointer Exception
+            passed[position] = true;
         }
     }
 
@@ -113,7 +123,7 @@ public class BoundaryValueAnalysis extends AndroidTestCase {
     }
 
     public void testGetItemName() throws Exception{
-        //BVA_02
+        //BVA_02.0
         //testInput2
         String[] expectedOutput = {"Not Found", "Abyssal Scepter", "Aegis of the Legion", "Amplifying Tome", "Ancient Coin", "Not Found"};
         resetMembers();
@@ -157,8 +167,56 @@ public class BoundaryValueAnalysis extends AndroidTestCase {
 
         System.out.println(myChampionsManager.getChampionDescription(0));
 
-        printPassed();
+        /*printPassed();*/
 
         assertEquals("BVA_03.0", true, finalResult);
     }
+
+    public void testGetItemDescription() throws Exception{
+        //BVA_04.0
+        //testInput2
+        String[] expectedOutput = {"Not Found",
+                "+70 Ability Power\n" + "+50 Magic Resist\n" + "\n" + "UNIQUE Aura: Reduces the Magic Resist of nearby enemies by 20.",
+                "+200 Health\n" + "+20 Magic Resistance\n" + "\n" + "UNIQUE Aura - Legion: Grants nearby allies +20 Magic Resist and +75% Base Health Regen.\n" + "\n" + "(Unique Auras with the same name don't stack.)",
+                "+20 Ability Power",
+                "+25% Base Mana Regen\n" + "\n" + "UNIQUE Passive - Favor: Being near a minion death without dealing the killing blow grants 2 Gold and 5 Health.\n" + "\n" + "Limited to 1 Gold Income item\n" + "\n" + "''Gold dust rises from the desert and clings to the coin.'' - Historian Shurelya, 11 November, 23 CLE",
+                "Not Found"};
+        resetMembers();
+
+        for (int i = 0; i < 6; i++){
+            try {
+                runInput(i, myItemsManager.getItemDescription(testInput2[i]), expectedOutput[i]);
+            } catch (IndexOutOfBoundsException iooe){
+                runCatch(i);
+            }
+        }
+
+        isAllTrue();
+
+        assertEquals("BVA_04.0", true, finalResult);
+
+
+    }
+
+    public void testGetChampionIcon() throws Exception{
+        //BVA_05.0
+        //testInput1
+        String[] expectedOutput = {"Not Found", null, null, null, null, "Not Found"};
+        resetMembers();
+
+        for (int i = 0; i < 6; i++){
+            try {
+                runInput(i, myChampionsManager.getChampionIcon(testInput[i]), expectedOutput[i]);
+            } catch (IndexOutOfBoundsException iooe){
+                runCatch(i);
+            } catch (NullPointerException npe){
+                runCatchNullPointerException(i);
+            }
+        }
+
+        isAllTrue();
+
+        assertEquals("BVA_05.0", true, finalResult);
+    }
+    
 }
