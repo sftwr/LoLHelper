@@ -20,20 +20,10 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
         pChampionsManager   = new ChampionsManager();
         pItemsManager       = new ItemsManager();
         bTestsPassed        = new boolean[5];
-
-        testAddChampion(1);
-        testAddItem(2);
-
-        pChampionsManager   = new ChampionsManager();
-        pItemsManager       = new ItemsManager();
-
-        testGetChampionName(3);
-        testGetItemName(4);
-        testDelChampion(5);
     }
 
-    public void testAddItem(int _iTestNumber){
-        _iTestNumber        = _iTestNumber - 1;
+    public void testAddItem() throws Exception {
+        int _iTestNumber        = 1 - 1;
 
         int iIndex         = 2147483647;
         String sName        = "Test";
@@ -48,8 +38,8 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
         assertEquals("EVA_01.0", true, bTestsPassed[_iTestNumber]);
     }
 
-    public void testAddChampion(int _iTestNumber){
-        _iTestNumber        = _iTestNumber - 1;
+    public void testAddChampion() throws Exception {
+        int _iTestNumber        = 2 - 1;
 
         int iIndex         = 2147483647;
         String sName        = "Test";
@@ -65,8 +55,8 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
     }
 
     // Test EVA03.0
-    public void testGetChampionName(int _iTestNumber){
-        _iTestNumber    = _iTestNumber - 1;
+    public void testGetChampionName() throws Exception {
+        int _iTestNumber    = 3 - 1;
         int iIndex      = 2147483647;
 
         try {
@@ -80,8 +70,8 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
     }
 
     // Test EVA04.0
-    public void testGetItemName(int _iTestNumber){
-        _iTestNumber    = _iTestNumber - 1;
+    public void testGetItemName() throws Exception {
+        int _iTestNumber    = 4 - 1;
         int iIndex      = 2147483647;
 
         try {
@@ -94,8 +84,8 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
     }
 
     // Test EVA05.0
-    public void testDelChampion(int _iTestNumber){
-        _iTestNumber    = _iTestNumber - 1;
+    public void testDelChampion() throws Exception {
+        int _iTestNumber    = 5 - 1;
         int iIndex      = 2147483647;
 
         try {

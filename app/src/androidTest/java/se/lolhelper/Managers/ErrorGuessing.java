@@ -20,20 +20,10 @@ public class ErrorGuessing extends AndroidTestCase {
         pChampionsManager = new ChampionsManager();
         pItemsManager     = new ItemsManager();
         bTestsPassed      = new boolean[5];
-
-        testAddChampion(1);
-        testAddItem(2);
-
-        pChampionsManager = new ChampionsManager();
-        pItemsManager     = new ItemsManager();
-
-        testGetItemDescription(3);
-        testGetChampionIcon(4);
-        testGetItemIcon(5);
     }
 
-    void testAddChampion(int _iTestNumber){
-        _iTestNumber = _iTestNumber - 1 ;
+    public void testAddChampion() throws Exception {
+        int _iTestNumber = 1 - 1 ;
 
         int iIndex          = 124;
         String sName        = "Aat\"rox";
@@ -48,8 +38,8 @@ public class ErrorGuessing extends AndroidTestCase {
         assertEquals("EG_01.0", true, bTestsPassed[_iTestNumber]);
     }
 
-    void testAddItem(int _iTestNumber){
-        _iTestNumber = _iTestNumber - 1 ;
+    public void testAddItem() throws Exception {
+        int _iTestNumber = 2 - 1 ;
 
         int iIndex          = 124;
         String sName        = "Abyssal ;Scepter";
@@ -64,12 +54,12 @@ public class ErrorGuessing extends AndroidTestCase {
         assertEquals("EG_02.0", true, bTestsPassed[_iTestNumber]);
     }
 
-    void testGetItemDescription(int _iTestNumber){
-        _iTestNumber = _iTestNumber - 1 ;
+    public void testGetItemDescription() throws Exception {
+        int _iTestNumber = 3 - 1 ;
 
         String sName        = "Abyssal ;%Scepter";
 
-        String sReturnValue = pItemsManager.pItems.getItemByName(sName).getDescription();
+        String sReturnValue = pItemsManager.getItemDescription(sName);
         if(sReturnValue.equals("Not Found"))
             bTestsPassed[_iTestNumber] = true;
         else // If getDescription() is not equal to "Not Found"
@@ -78,12 +68,12 @@ public class ErrorGuessing extends AndroidTestCase {
         assertEquals("EG_03.0", true, bTestsPassed[_iTestNumber]);
     }
 
-    void testGetChampionIcon(int _iTestNumber){
-        _iTestNumber = _iTestNumber - 1 ;
+    public void testGetChampionIcon() throws Exception {
+        int _iTestNumber = 4 - 1 ;
 
         String sName        = "Aa%trox";
 
-        String sReturnValue = pChampionsManager.pChampions.getChampionByName(sName).getIcon();
+        String sReturnValue = pChampionsManager.getChampionIcon(sName);
         if(sReturnValue.equals("Not Found"))
             bTestsPassed[_iTestNumber] = true;
         else // If getIcon() is not equal to "Not Found"
@@ -92,12 +82,12 @@ public class ErrorGuessing extends AndroidTestCase {
         assertEquals("EG_04.0", true, bTestsPassed[_iTestNumber]);
     }
 
-    void testGetItemIcon(int _iTestNumber){
-        _iTestNumber = _iTestNumber - 1 ;
+    public void testGetItemIcon() throws Exception {
+        int _iTestNumber = 5 - 1 ;
 
         String sName        = "Abyssal ;%Scepter";
 
-        String sReturnValue = pItemsManager.pItems.getItemByName(sName).getIcon();
+        String sReturnValue = pItemsManager.getItemIcon(sName);
         if(sReturnValue.equals("Not Found"))
             bTestsPassed[_iTestNumber] = true;
         else // If getIcon() is not equal to "Not Found"
