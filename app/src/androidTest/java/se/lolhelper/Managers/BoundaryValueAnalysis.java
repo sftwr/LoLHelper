@@ -87,7 +87,7 @@ public class BoundaryValueAnalysis extends AndroidTestCase {
         //BVA_01.0
         //testInput
 
-        String[] expectedOutput = {"Not Found", "Aatrox", "Ahri", "Zilean", "Zyra", "Not Found"};
+        String[] expectedOutput = {"Should be IndexOutOfBoundsException", "Aatrox", "Ahri", "Zilean", "Zyra", "Should be IndexOutOfBoundsException"};
         resetMembers();
 
 
@@ -125,7 +125,7 @@ public class BoundaryValueAnalysis extends AndroidTestCase {
     public void testGetItemName() throws Exception{
         //BVA_02.0
         //testInput2
-        String[] expectedOutput = {"Not Found", "Abyssal Scepter", "Aegis of the Legion", "Amplifying Tome", "Ancient Coin", "Not Found"};
+        String[] expectedOutput = {"Should be IndexOutOfBoundsException", "Abyssal Scepter", "Aegis of the Legion", "Amplifying Tome", "Ancient Coin", "Should be IndexOutOfBoundsException"};
         resetMembers();
 
         for (int i = 0; i < 6; i++){
@@ -175,12 +175,12 @@ public class BoundaryValueAnalysis extends AndroidTestCase {
     public void testGetItemDescription() throws Exception{
         //BVA_04.0
         //testInput2
-        String[] expectedOutput = {"Not Found",
+        String[] expectedOutput = {"Should be IndexOutOfBoundsException",
                 "+70 Ability Power\n" + "+50 Magic Resist\n" + "\n" + "UNIQUE Aura: Reduces the Magic Resist of nearby enemies by 20.",
                 "+200 Health\n" + "+20 Magic Resistance\n" + "\n" + "UNIQUE Aura - Legion: Grants nearby allies +20 Magic Resist and +75% Base Health Regen.\n" + "\n" + "(Unique Auras with the same name don't stack.)",
                 "+20 Ability Power",
                 "+25% Base Mana Regen\n" + "\n" + "UNIQUE Passive - Favor: Being near a minion death without dealing the killing blow grants 2 Gold and 5 Health.\n" + "\n" + "Limited to 1 Gold Income item\n" + "\n" + "''Gold dust rises from the desert and clings to the coin.'' - Historian Shurelya, 11 November, 23 CLE",
-                "Not Found"};
+                "Should be IndexOutOfBoundsException"};
         resetMembers();
 
         for (int i = 0; i < 6; i++){
@@ -201,7 +201,7 @@ public class BoundaryValueAnalysis extends AndroidTestCase {
     public void testGetChampionIcon() throws Exception{
         //BVA_05.0
         //testInput1
-        String[] expectedOutput = {"Not Found", null, null, null, null, "Not Found"};
+        String[] expectedOutput = {"Should be IndexOutOfBoundsException", null, null, null, null, "Should be IndexOutOfBoundsException"};
         resetMembers();
 
         for (int i = 0; i < 6; i++){

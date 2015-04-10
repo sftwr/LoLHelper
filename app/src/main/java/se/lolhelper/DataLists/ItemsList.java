@@ -27,7 +27,7 @@ public class ItemsList{ // Linked list of all items available
         else return null;
     }
 
-    private Item getItemByName(int _iIndex, String _sItemName){
+    public Item getItemByName(int _iIndex, String _sItemName){
         if(_iIndex < this.getSize()){
             if(getItem(_iIndex).getName().equals(_sItemName)){
                 return(getItem(_iIndex));

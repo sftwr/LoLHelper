@@ -95,4 +95,8 @@ public class ItemsManager {
         }
         return(sItemNames.toArray(new String[sItemNames.size()]));
     }
+
+    public ItemsList getItemsList(){
+        return(this.pItems);
+    }
 }

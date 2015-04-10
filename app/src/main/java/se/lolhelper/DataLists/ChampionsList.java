@@ -27,7 +27,7 @@ public class ChampionsList{ // Linked list of all Champions available
         else return null;
     }
 
-    private Champion getChampionByName(int _iIndex, String _sChampionName){
+    public Champion getChampionByName(int _iIndex, String _sChampionName){
         if(_iIndex < this.getSize()){
             if(getChampion(_iIndex).getName().equals(_sChampionName)){
                 return(getChampion(_iIndex));
