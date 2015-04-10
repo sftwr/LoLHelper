@@ -58,7 +58,7 @@ public class ErrorGuessing extends AndroidTestCase {
         boolean bReturnValue = pItemsManager.pItems.addItem(iIndex, sName, sDescription, null);
         if(bReturnValue)
             bTestsPassed[_iTestNumber] = false;
-        else // If addChampions() returns false
+        else // If addItem() returns false
             bTestsPassed[_iTestNumber] = true;
 
         assertEquals("EG_02.0", true, bTestsPassed[_iTestNumber]);
@@ -68,12 +68,11 @@ public class ErrorGuessing extends AndroidTestCase {
         _iTestNumber = _iTestNumber - 1 ;
 
         String sName        = "Abyssal ;%Scepter";
-        String sDescription = "Test";
 
         String sReturnValue = pItemsManager.pItems.getItemByName(sName).getDescription();
         if(sReturnValue.equals("Not Found"))
             bTestsPassed[_iTestNumber] = true;
-        else // If addChampions() returns false
+        else // If getDescription() is not equal to "Not Found"
             bTestsPassed[_iTestNumber] = false;
 
         assertEquals("EG_03.0", true, bTestsPassed[_iTestNumber]);
@@ -87,7 +86,7 @@ public class ErrorGuessing extends AndroidTestCase {
         String sReturnValue = pChampionsManager.pChampions.getChampionByName(sName).getIcon();
         if(sReturnValue.equals("Not Found"))
             bTestsPassed[_iTestNumber] = true;
-        else // If addChampions() returns false
+        else // If getIcon() is not equal to "Not Found"
             bTestsPassed[_iTestNumber] = false;
 
         assertEquals("EG_04.0", true, bTestsPassed[_iTestNumber]);
@@ -101,7 +100,7 @@ public class ErrorGuessing extends AndroidTestCase {
         String sReturnValue = pItemsManager.pItems.getItemByName(sName).getIcon();
         if(sReturnValue.equals("Not Found"))
             bTestsPassed[_iTestNumber] = true;
-        else // If addChampions() returns false
+        else // If getIcon() is not equal to "Not Found"
             bTestsPassed[_iTestNumber] = false;
 
         assertEquals("EG_05.0", true, bTestsPassed[_iTestNumber]);
