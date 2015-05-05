@@ -2,6 +2,8 @@ package se.lolhelper.DataLists;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ItemsList{ // Linked list of all items available
 
@@ -15,9 +17,18 @@ public class ItemsList{ // Linked list of all items available
         return(pItemsList.size());
     }
 
+    public boolean isAlphaNumeric(String _sInput){
+        Pattern hPattern = Pattern.compile("[^a-zA-Z0-9]");
+        Matcher hMatcher = hPattern.matcher(_sInput);
+        return(hMatcher.matches());
+    }
+
     public boolean addItem(int _iItemId, String _sItemName, String _sItemDescription, String _sIcon){
         Item pTemporaryItem = new Item(_iItemId, _sItemName, _sItemDescription, _sIcon);
-        return(pItemsList.add(pTemporaryItem));
+        if(isAlphaNumeric(_sItemName))
+            return(pItemsList.add(pTemporaryItem));
+        else
+            return false;
     }
 
     public Item getItemByName(String _sItemName){

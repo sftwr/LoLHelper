@@ -17,10 +17,21 @@ public class ChampionsList{ // Linked list of all Champions available
         return(pChampionsList.size());
     }
 
-    public boolean isAlphaNumeric(String _sInput){
+    private boolean isAlphaNumeric(String _sInput){
         Pattern hPattern = Pattern.compile("[^a-zA-Z0-9]");
         Matcher hMatcher = hPattern.matcher(_sInput);
         return(hMatcher.matches());
+    }
+
+//    private boolean containsSymbols(String _sInput){
+//
+//    }
+
+    private boolean checkBoundaries(int _iChampionId){
+        if(_iChampionId > 0 && _iChampionId < 2147483647)
+            return true;
+        else
+            return false;
     }
 
     public boolean addChampion(int _iChampionId, String _sChampionName, String _sChampionDescription, String _sIcon){
