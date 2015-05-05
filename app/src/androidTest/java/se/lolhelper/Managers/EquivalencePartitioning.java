@@ -66,7 +66,7 @@ public class EquivalencePartitioning extends AndroidTestCase {
         }
 
         isAllTrue();
-
+        System.out.println("ep1.0here");
         printPassed();
 
         assertEquals("EP_01.0", true, finalResult);

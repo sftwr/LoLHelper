@@ -2,6 +2,7 @@ package se.lolhelper.DataLists;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ChampionsList{ // Linked list of all Champions available
 
@@ -17,6 +18,10 @@ public class ChampionsList{ // Linked list of all Champions available
 
     public boolean addChampion(int _iChampionId, String _sChampionName, String _sChampionDescription, String _sIcon){
         Champion pTemporaryChampion = new Champion(_iChampionId, _sChampionName, _sChampionDescription, _sIcon);
+        if (_iChampionId < 0) return false;
+        Pattern patName = Pattern.compile("[^a-zA-Z0-9 ']");
+        if (patName.matcher(_sChampionName).find()) return false;
+        if (_sIcon != null) return false;
         return(pChampionsList.add(pTemporaryChampion));
     }
 
