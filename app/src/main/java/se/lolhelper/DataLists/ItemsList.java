@@ -62,6 +62,12 @@ public class ItemsList{ // Linked list of all items available
             return false;
     }
 
+    public boolean addItem(){
+        Item pTemporaryItem = new Item();
+        pItemsList.add(pTemporaryItem);
+        return true;
+    }
+
     public Item getItemByName(String _sItemName){
         if(this.getSize() > 0){
             return(getItemByName(0, _sItemName));

@@ -62,6 +62,12 @@ public class ChampionsList{ // Linked list of all Champions available
             return false;
     }
 
+    public boolean addChampion(){
+        Champion pTemporaryChampion = new Champion();
+        pChampionsList.add(pTemporaryChampion);
+        return true;
+    }
+
     public Champion getChampionByName(String _sChampionName){
         if(this.getSize() > 0){
             return(getChampionByName(0, _sChampionName));
