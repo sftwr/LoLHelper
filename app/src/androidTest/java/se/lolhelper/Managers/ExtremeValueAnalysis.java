@@ -22,24 +22,8 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
         bTestsPassed        = new boolean[5];
     }
 
-    public void testAddItem() throws Exception {
-        int _iTestNumber        = 1 - 1;
-
-        int iIndex         = 2147483647;
-        String sName        = "Test";
-        String sDescription = "Test";
-
-        boolean bReturnValue = pItemsManager.pItems.addItem(iIndex, sName, sDescription, null);
-        if(bReturnValue)
-            bTestsPassed[_iTestNumber] = true;
-        else
-            bTestsPassed[_iTestNumber] = false;
-
-        assertEquals("EVA_01.0", true, bTestsPassed[_iTestNumber]);
-    }
-
     public void testAddChampion() throws Exception {
-        int _iTestNumber        = 2 - 1;
+        int _iTestNumber        = 1 - 1;
 
         int iIndex         = 2147483647;
         String sName        = "Test";
@@ -47,9 +31,25 @@ public class ExtremeValueAnalysis extends AndroidTestCase {
 
         boolean bReturnValue = pChampionsManager.pChampions.addChampion(iIndex, sName, sDescription, null);
         if(bReturnValue)
-            bTestsPassed[_iTestNumber] = true;
-        else
             bTestsPassed[_iTestNumber] = false;
+        else
+            bTestsPassed[_iTestNumber] = true;
+
+        assertEquals("EVA_01.0", true, bTestsPassed[_iTestNumber]);
+    }
+
+    public void testAddItem() throws Exception {
+        int _iTestNumber        = 2 - 1;
+
+        int iIndex         = 2147483647;
+        String sName        = "Test";
+        String sDescription = "Test";
+
+        boolean bReturnValue = pItemsManager.pItems.addItem(iIndex, sName, sDescription, null);
+        if(bReturnValue)
+            bTestsPassed[_iTestNumber] = false;
+        else
+            bTestsPassed[_iTestNumber] = true;
 
         assertEquals("EVA_02.0", true, bTestsPassed[_iTestNumber]);
     }

@@ -23,12 +23,32 @@ public class ChampionsList{ // Linked list of all Champions available
         return(hMatcher.matches());
     }
 
-//    private boolean containsSymbols(String _sInput){
-//
-//    }
+    private boolean isNumeric(String _sInput){
+        if(_sInput == null)
+            return false;
+        else {
+            Pattern hPattern = Pattern.compile("^[0-9]*$");
+            Matcher hMatcher = hPattern.matcher(_sInput);
+            return (hMatcher.matches());
+        }
+    }
+
+    // Checks to make sure certain symbols we do not want are not in the given string _sInput
+    private boolean containsNoSymbols(String _sInput){
+        if(_sInput == null)
+            return true;
+        else {
+            Pattern hPattern = Pattern.compile("[~*]");
+            Matcher hMatcher = hPattern.matcher(_sInput);
+            if(hMatcher.find())
+                return false;
+            else
+                return true;
+        }
+    }
 
     private boolean checkBoundaries(int _iChampionId){
-        if(_iChampionId > 0 && _iChampionId < 2147483647)
+        if(_iChampionId > 0 && _iChampionId <= 2147483646)
             return true;
         else
             return false;
@@ -36,7 +56,7 @@ public class ChampionsList{ // Linked list of all Champions available
 
     public boolean addChampion(int _iChampionId, String _sChampionName, String _sChampionDescription, String _sIcon){
         Champion pTemporaryChampion = new Champion(_iChampionId, _sChampionName, _sChampionDescription, _sIcon);
-        if(this.isAlphaNumeric(_sChampionName))
+        if(isAlphaNumeric(_sChampionName) && checkBoundaries(_iChampionId) &&  !isNumeric(_sIcon) && containsNoSymbols(_sChampionDescription))
             return(pChampionsList.add(pTemporaryChampion));
         else
             return false;

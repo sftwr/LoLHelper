@@ -23,9 +23,40 @@ public class ItemsList{ // Linked list of all items available
         return(hMatcher.matches());
     }
 
+    private boolean isNumeric(String _sInput){
+        if(_sInput == null)
+            return false;
+        else {
+            Pattern hPattern = Pattern.compile("^[0-9]*$");
+            Matcher hMatcher = hPattern.matcher(_sInput);
+            return (hMatcher.matches());
+        }
+    }
+
+    // Checks to make sure certain symbols we do not want are not in the given string _sInput
+    private boolean containsNoSymbols(String _sInput){
+        if(_sInput == null)
+            return true;
+        else {
+            Pattern hPattern = Pattern.compile("[~*]");
+            Matcher hMatcher = hPattern.matcher(_sInput);
+            if(hMatcher.find())
+                return false;
+            else
+                return true;
+        }
+    }
+
+    private boolean checkBoundaries(int _iItemId){
+        if(_iItemId > 0 && _iItemId <= 2147483646)
+            return true;
+        else
+            return false;
+    }
+
     public boolean addItem(int _iItemId, String _sItemName, String _sItemDescription, String _sIcon){
         Item pTemporaryItem = new Item(_iItemId, _sItemName, _sItemDescription, _sIcon);
-        if(isAlphaNumeric(_sItemName))
+        if(isAlphaNumeric(_sItemName) && checkBoundaries(_iItemId) &&  !isNumeric(_sIcon) && containsNoSymbols(_sItemDescription))
             return(pItemsList.add(pTemporaryItem));
         else
             return false;
