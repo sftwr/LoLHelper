@@ -21,7 +21,7 @@ public class SupplementChampionsList extends AndroidTestCase{
         return true;
     }
 
-    public void testDelChampion(){
+    public void testDelChampion() throws Exception {
         boolean pTestPass[] = new boolean[2];
         ChampionsList.Champion pChampion;
 
@@ -36,7 +36,7 @@ public class SupplementChampionsList extends AndroidTestCase{
         assertEquals("LC_01", true, checkAll(pTestPass));
     }
 
-    public void testGetChampion(){
+    public void testGetChampion() throws Exception {
         boolean pTestPass[] = new boolean[2];
         ChampionsList.Champion pChampion;
 
@@ -52,7 +52,7 @@ public class SupplementChampionsList extends AndroidTestCase{
         assertEquals("LC_02", true, checkAll(pTestPass));
     }
 
-    public void testChampionClass(){
+    public void testChampionClass() throws Exception {
         boolean pTestPass[] = new boolean[2];
         ChampionsList.Champion pChampion;
 

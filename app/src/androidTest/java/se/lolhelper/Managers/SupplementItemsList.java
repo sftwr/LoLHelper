@@ -21,7 +21,7 @@ public class SupplementItemsList extends AndroidTestCase{
         return true;
     }
 
-    public void testDelItem(){
+    public void testDelItem() throws Exception {
         boolean pTestPass[] = new boolean[2];
         ItemsList.Item pItem;
 
@@ -36,7 +36,7 @@ public class SupplementItemsList extends AndroidTestCase{
         assertEquals("LC_01", true, checkAll(pTestPass));
     }
 
-    public void testGetItem(){
+    public void testGetItem() throws Exception {
         boolean pTestPass[] = new boolean[2];
         ItemsList.Item pItem;
 
@@ -52,7 +52,7 @@ public class SupplementItemsList extends AndroidTestCase{
         assertEquals("LC_02", true, checkAll(pTestPass));
     }
 
-    public void testItemClass(){
+    public void testItemClass() throws Exception {
         boolean pTestPass[] = new boolean[2];
         ItemsList.Item pItem;
 
