@@ -18,7 +18,7 @@ public class ItemsList{ // Linked list of all items available
     }
 
     public boolean isAlphaNumeric(String _sInput){
-        Pattern hPattern = Pattern.compile("[^a-zA-Z0-9]");
+        Pattern hPattern = Pattern.compile("^[a-zA-Z0-9]*$");
         Matcher hMatcher = hPattern.matcher(_sInput);
         return(hMatcher.matches());
     }

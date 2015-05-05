@@ -18,7 +18,7 @@ public class ChampionsList{ // Linked list of all Champions available
     }
 
     private boolean isAlphaNumeric(String _sInput){
-        Pattern hPattern = Pattern.compile("[^a-zA-Z0-9]");
+        Pattern hPattern = Pattern.compile("^[a-zA-Z0-9]*$");
         Matcher hMatcher = hPattern.matcher(_sInput);
         return(hMatcher.matches());
     }
@@ -36,7 +36,7 @@ public class ChampionsList{ // Linked list of all Champions available
 
     public boolean addChampion(int _iChampionId, String _sChampionName, String _sChampionDescription, String _sIcon){
         Champion pTemporaryChampion = new Champion(_iChampionId, _sChampionName, _sChampionDescription, _sIcon);
-        if(isAlphaNumeric(_sChampionName))
+        if(this.isAlphaNumeric(_sChampionName))
             return(pChampionsList.add(pTemporaryChampion));
         else
             return false;
