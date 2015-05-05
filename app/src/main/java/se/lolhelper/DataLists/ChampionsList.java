@@ -18,7 +18,7 @@ public class ChampionsList{ // Linked list of all Champions available
     }
 
     private boolean isAlphaNumeric(String _sInput){
-        Pattern hPattern = Pattern.compile("^[a-zA-Z0-9]*$");
+        Pattern hPattern = Pattern.compile("^[a-zA-Z0-9 ]*$");
         Matcher hMatcher = hPattern.matcher(_sInput);
         return(hMatcher.matches());
     }
